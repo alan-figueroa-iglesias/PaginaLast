@@ -1,0 +1,137 @@
+<% if current_user.is_a?(Student) %>
+<body>
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Carousel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" hidden>.</a>
+            </li>
+          </ul>
+          <div class="dropdown"  >
+            <button type="button" class="btn btn-danger"><%= link_to 'Sign out', logout_path, method: :delete, class: "dropdown-item" %></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="profile">
+    <section>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-md-9 col-lg-7 col-xl-5">
+            <div class="cardc">
+              <div class="card-body p-4">
+                <div class="d-flex text-black">
+                  <div class="flex-shrink-0">
+                    <%= image_tag current_user.avatar, class: "img-fluid", style: "width: 180px; height: 180px; border-radius: 10px;" if current_user.avatar.attached? %>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h4 class="mb-2"> Name: <%= current_user.name %> </h4>
+                    <p class="mb-2 pb-2" style="color: #2b2a2a;">Number Account: <%= current_user.account %> </p>
+                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                      style="background-color: #f5f5f5;">
+                      <div>
+                        <p class="small text-muted mb-1">Grade</p>
+                        <p class="mb-0"> <%= current_user.grade %> </p>
+                      </div>
+                      <div class="px-3">
+                        <p class="small text-muted mb-1">Group</p>
+                        <p class="mb-0"> <%= current_user.group %> </p>
+                      </div>
+                      <div>
+                        <p class="small text-muted mb-1">Average</p>
+                        <p class="mb-0">8.5</p>
+                      </div>
+                    </div>
+                    <p class="mb-2 pb-2" style="color: #2b2a2a;">Email: <%= current_user.email %> </p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container py-5 h-100 califications">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="card-body p-4">
+        <main>
+          <div class="container mt-4">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="pt-3 pb-4 text-center font-bold font-up">January - August - 2023</h2>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width: 30%;">Assigment</th>
+                        <th style="width: 30%;">Teacher</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>Average</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Spanish</td>
+                        <td>Mark</td>
+                        <td>9.8</td>
+                        <td>9.5</td>
+                        <td>10</td>
+                        <td>9.9</td>
+                      </tr>
+                      <tr>
+                        <td>Education Civic and Etic</td>
+                        <td>Carlos José Flores López</td>
+                        <td>9.8</td>
+                        <td>9.5</td>
+                        <td>10</td>
+                        <td>9.9</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              </div>      
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>    
+
+  <%= render 'alert' %>  
+</body>
+<% else %>
+  <p>No has iniciado sesión como estudiante.</p>
+<% end %>
+
+<style>
+  .profile{
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px; 
+  }
+
+  .califications{
+    margin-top: -8%;
+    text-align: center;
+  }
+</style>
+
